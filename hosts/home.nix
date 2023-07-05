@@ -53,10 +53,11 @@
       unrar             # Rar Files
       zip               # Zip
     ];
-    file location {
+
+    file."${location}" = {
       source = ../modules/themes/default;
       recursive = true;
-    }
+    };
 
     pointerCursor = {                         # This will set cursor system-wide so applications can not choose their own
       gtk.enable = true;

@@ -1,4 +1,4 @@
-{ lib, inputs, nixpkgs, nixpkgs-unstable, home-manager, nur, user, location,  hyprland, ... }:
+{ lib, inputs, nixpkgs, nixpkgs-unstable, home-manager, nur, user, location, hyprland, ... }:
 
 let
   system = "x86_64-linux";                                  # System architecture
@@ -35,7 +35,7 @@ in
         home-manager.useGlobalPkgs = true;
         home-manager.useUserPackages = true;
         home-manager.extraSpecialArgs = {
-          inherit unstable user;
+          inherit unstable user location;
           host = {
             hostName = "desktop";                           #For Xorg iGPU  | Videocard     | Hyprland iGPU
             mainMonitor = "eDP-1"; 
