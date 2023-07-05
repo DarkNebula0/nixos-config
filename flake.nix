@@ -26,7 +26,7 @@
   outputs = inputs @ { self, nixpkgs, nixpkgs-unstable, home-manager, nur, hyprland, ... }:   # Function that tells my flake which to use and what do what to do with the dependencies.
     let                                                                     # Variables that can be used in the config files.
       user = "andre";
-      location = "$HOME/nixos-config";
+      location = "$HOME/.config";
     in                                                                      # Use above variables in ...
     {
       nixosConfigurations = (                                               # NixOS configurations

@@ -11,7 +11,7 @@
 #               └─ home.nix *
 #
 
-{ config, lib, pkgs, host, ... }:
+{ config, lib, pkgs, host, location, ... }:
 
 let
   workspaces = with host;
@@ -20,7 +20,7 @@ let
     '';
 
   monitors = with host;
-      ''workspace=${toString mainMonitor},1
+    ''workspace=${toString mainMonitor},1
       workspace=${toString mainMonitor},2
       workspace=${toString mainMonitor},3
       workspace=${toString mainMonitor},4
@@ -29,57 +29,82 @@ let
 
   execute = with host;
     ''
-      #exec-once=${pkgs.mpvpaper}/bin/mpvpaper -sf -v -o "--loop --panscan=1" '*' $HOME/.config/wall.mp4  # Moving wallpaper (small performance hit)
-      exec-once=${pkgs.swaybg}/bin/swaybg -m center -i $HOME/.config/wall.png  # Static wallpaper
+      #exec-once=${pkgs.mpvpaper}/bin/mpvpaper -sf -v -o "--loop --panscan=1" '*' ${location}/wall.mp4  # Moving wallpaper (small performance hit)
+      exec-once=${pkgs.swaybg}/bin/swaybg -m center -i ${location}/assets/backgrounds/default.png  # Static wallpaper
     '';
 in
 let
   hyprlandConf = with host; ''
     ${workspaces}
     ${monitors}
+    source = ${location}/hypr/mocha.conf
 
     general {
-      #main_mod=SUPER
-      border_size=3
-      gaps_in=5
-      gaps_out=7
-      col.active_border=0x80ffffff
-      col.inactive_border=0x66333333
-      layout=dwindle
+        # See https://wiki.hyprland.org/Configuring/Variables/ for more
+
+        gaps_in = 5
+        gaps_out = 5
+        border_size = 2
+        col.active_border = $mauve $pink 45deg
+        col.inactive_border = $base
+
+        layout = dwindle
     }
 
     decoration {
-      rounding=5
-      multisample_edges=true
-      active_opacity=0.93
-      inactive_opacity=0.93
-      fullscreen_opacity=1
-      blur=true
-      drop_shadow=false
-    }
+    # See https://wiki.hyprland.org/Configuring/Variables/ for more
+
+    active_opacity=0.9
+    inactive_opacity=0.7
+    fullscreen_opacity=1.0
+
+    rounding = 10
+    blur = yes
+    blur_size = 5
+    blur_passes = 1
+    blur_new_optimizations = on
+
+    drop_shadow = yes
+    shadow_range = 4
+    shadow_render_power = 3
+    col.shadow = rgba(1a1a1aee)
+  }
 
     animations {
-      enabled=true
-      bezier = myBezier,0.1,0.7,0.1,1.05
-      animation=fade,1,7,default
-      animation=windows,1,7,myBezier
-      animation=windowsOut,1,3,default,popin 60%
-      animation=windowsMove,1,7,myBezier
-    }
+        enabled = yes
 
-    input {
-      kb_layout=us
-      #kb_options=caps:ctrl_modifier
-      follow_mouse=2
-      repeat_delay=250
-      numlock_by_default=1
-      accel_profile=flat
-      sensitivity=0.8
+        # Some default animations, see https://wiki.hyprland.org/Configuring/Animations/ for more
+
+        bezier = myBezier, 0.05, 0.9, 0.1, 1.05
+
+        animation = windows, 1, 7, myBezier
+        animation = windowsOut, 1, 7, default, popin 80%
+        animation = border, 1, 10, default
+        animation = borderangle, 1, 8, default
+        animation = fade, 1, 7, default
+        animation = workspaces, 1, 6, default
     }
 
     dwindle {
-      pseudotile=false
-      force_split=2
+        # See https://wiki.hyprland.org/Configuring/Dwindle-Layout/ for more
+        pseudotile = yes # master switch for pseudotiling. Enabling is bound to mainMod + P in the keybinds section below
+        preserve_split = yes # you probably want this
+    }
+
+    master {
+        # See https://wiki.hyprland.org/Configuring/Master-Layout/ for more
+        new_is_master = true
+    }
+
+    gestures {
+        # See https://wiki.hyprland.org/Configuring/Variables/ for more
+        workspace_swipe = true
+    }
+
+    # Example per-device config
+    # See https://wiki.hyprland.org/Configuring/Keywords/#executing for more
+    device:epic mouse V1 {
+        sensitivity = -0.5
     }
 
     debug {
@@ -100,7 +125,7 @@ let
     bind=SUPER,P,pseudo,
     bind=SUPER,F,fullscreen,
     bind=SUPER,R,forcerendererreload
-    bind=SUPERSHIFT,R,exec,${pkgs.hyprland}/bin/hyprctl reload
+    bind=SUPER SHIFT,R,exec,${pkgs.hyprland}/bin/hyprctl reload
     bind=SUPER,T,exec,${pkgs.emacs}/bin/emacsclient -c
 
     bind=SUPER,left,movefocus,l
@@ -108,10 +133,10 @@ let
     bind=SUPER,up,movefocus,u
     bind=SUPER,down,movefocus,d
 
-    bind=SUPERSHIFT,left,movewindow,l
-    bind=SUPERSHIFT,right,movewindow,r
-    bind=SUPERSHIFT,up,movewindow,u
-    bind=SUPERSHIFT,down,movewindow,d
+    bind=SUPER SHIFT,left,movewindow,l
+    bind=SUPER SHIFT,right,movewindow,r
+    bind=SUPER SHIFT,up,movewindow,u
+    bind=SUPER SHIFT,down,movewindow,d
 
     bind=ALT,1,workspace,1
     bind=ALT,2,workspace,2
@@ -126,18 +151,18 @@ let
     bind=ALT,right,workspace,+1
     bind=ALT,left,workspace,-1
 
-    bind=ALTSHIFT,1,movetoworkspace,1
-    bind=ALTSHIFT,2,movetoworkspace,2
-    bind=ALTSHIFT,3,movetoworkspace,3
-    bind=ALTSHIFT,4,movetoworkspace,4
-    bind=ALTSHIFT,5,movetoworkspace,5
-    bind=ALTSHIFT,6,movetoworkspace,6
-    bind=ALTSHIFT,7,movetoworkspace,7
-    bind=ALTSHIFT,8,movetoworkspace,8
-    bind=ALTSHIFT,9,movetoworkspace,9
-    bind=ALTSHIFT,0,movetoworkspace,10
-    bind=ALTSHIFT,right,movetoworkspace,+1
-    bind=ALTSHIFT,left,movetoworkspace,-1
+    bind=ALT SHIFT,1,movetoworkspace,1
+    bind=ALT SHIFT,2,movetoworkspace,2
+    bind=ALT SHIFT,3,movetoworkspace,3
+    bind=ALT SHIFT,4,movetoworkspace,4
+    bind=ALT SHIFT,5,movetoworkspace,5
+    bind=ALT SHIFT,6,movetoworkspace,6
+    bind=ALT SHIFT,7,movetoworkspace,7
+    bind=ALT SHIFT,8,movetoworkspace,8
+    bind=ALT SHIFT,9,movetoworkspace,9
+    bind=ALT SHIFT,0,movetoworkspace,10
+    bind=ALT SHIFT,right,movetoworkspace,+1
+    bind=ALT SHIFT,left,movetoworkspace,-1
 
     bind=CTRL,right,resizeactive,20 0
     bind=CTRL,left,resizeactive,-20 0
@@ -164,6 +189,7 @@ let
     exec-once=dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP
     exec-once=${pkgs.waybar}/bin/waybar
     exec-once=${pkgs.blueman}/bin/blueman-applet
+    exec-once=${pkgs.discord}/bin/discord
     ${execute}
   '';
 in
