@@ -1,4 +1,4 @@
-{ lib, inputs, nixpkgs, nixpkgs-unstable, home-manager, nur, user, location, dslr, doom-emacs, hyprland, plasma-manager, ... }:
+{ lib, inputs, nixpkgs, nixpkgs-unstable, home-manager, nur, user, location, dslr, hyprland, plasma-manager, ... }:
 
 let
   system = "x86_64-linux";                                  # System architecture
@@ -40,7 +40,7 @@ in
         home-manager.useGlobalPkgs = true;
         home-manager.useUserPackages = true;
         home-manager.extraSpecialArgs = {
-          inherit unstable user fix doom-emacs;
+          inherit unstable user fix;
           host = {
             hostName = "desktop";                           #For Xorg iGPU  | Videocard     | Hyprland iGPU
             mainMonitor = "DP-1"; 
