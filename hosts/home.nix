@@ -54,7 +54,7 @@
       zip               # Zip
     ];
     file.".config/wall".source = ../modules/themes/wall.png;
-    file.".config/wall.mp4".source = ../modules/themes/wall.mp4;
+    #file.".config/wall.mp4".source = ../modules/themes/wall.mp4;
     pointerCursor = {                         # This will set cursor system-wide so applications can not choose their own
       gtk.enable = true;
       name = "Dracula-cursors";

@@ -14,11 +14,9 @@
 { config, lib, pkgs, host, ... }:
 
 let
-
   workspaces = with host;
      ''
       monitor=${toString mainMonitor},1920x1080@60,1920x0,1
-      monitor=${toString secondMonitor},1920x1080@60,0x0,1
     '';
 
   monitors = with host;
@@ -77,10 +75,7 @@ let
       numlock_by_default=1
       accel_profile=flat
       sensitivity=0.8
-      ${touchpad}
     }
-
-    ${gestures}
 
     dwindle {
       pseudotile=false
