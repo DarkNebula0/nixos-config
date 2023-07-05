@@ -54,7 +54,7 @@
       zip               # Zip
     ];
     file location {
-      source = ../modules/themes;
+      source = ../modules/themes/default;
       recursive = true;
     }
 
