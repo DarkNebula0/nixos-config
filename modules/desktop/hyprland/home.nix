@@ -39,6 +39,20 @@ let
     ${monitors}
     source = ${location}/hypr/mocha.conf
 
+    input {
+
+        kb_layout = de
+        kb_variant =
+        kb_model =
+        kb_options =
+        kb_rules =
+
+        follow_mouse = 1
+
+        sensitivity = -0.5 # -1.0 - 1.0, 0 means no modification.
+        force_no_accel = true
+    }
+
     general {
         # See https://wiki.hyprland.org/Configuring/Variables/ for more
 
@@ -138,31 +152,31 @@ let
     bind=SUPER SHIFT,up,movewindow,u
     bind=SUPER SHIFT,down,movewindow,d
 
-    bind=ALT,1,workspace,1
-    bind=ALT,2,workspace,2
-    bind=ALT,3,workspace,3
-    bind=ALT,4,workspace,4
-    bind=ALT,5,workspace,5
-    bind=ALT,6,workspace,6
-    bind=ALT,7,workspace,7
-    bind=ALT,8,workspace,8
-    bind=ALT,9,workspace,9
-    bind=ALT,0,workspace,10
-    bind=ALT,right,workspace,+1
-    bind=ALT,left,workspace,-1
+    bind=SUPER,1,workspace,1
+    bind=SUPER,2,workspace,2
+    bind=SUPER,3,workspace,3
+    bind=SUPER,4,workspace,4
+    bind=SUPER,5,workspace,5
+    bind=SUPER,6,workspace,6
+    bind=SUPER,7,workspace,7
+    bind=SUPER,8,workspace,8
+    bind=SUPER,9,workspace,9
+    bind=SUPER,0,workspace,10
+    bind=SUPER,right,workspace,+1
+    bind=SUPER,left,workspace,-1
 
-    bind=ALT SHIFT,1,movetoworkspace,1
-    bind=ALT SHIFT,2,movetoworkspace,2
-    bind=ALT SHIFT,3,movetoworkspace,3
-    bind=ALT SHIFT,4,movetoworkspace,4
-    bind=ALT SHIFT,5,movetoworkspace,5
-    bind=ALT SHIFT,6,movetoworkspace,6
-    bind=ALT SHIFT,7,movetoworkspace,7
-    bind=ALT SHIFT,8,movetoworkspace,8
-    bind=ALT SHIFT,9,movetoworkspace,9
-    bind=ALT SHIFT,0,movetoworkspace,10
-    bind=ALT SHIFT,right,movetoworkspace,+1
-    bind=ALT SHIFT,left,movetoworkspace,-1
+    bind=SUPER SHIFT,1,movetoworkspace,1
+    bind=SUPER SHIFT,2,movetoworkspace,2
+    bind=SUPER SHIFT,3,movetoworkspace,3
+    bind=SUPER SHIFT,4,movetoworkspace,4
+    bind=SUPER SHIFT,5,movetoworkspace,5
+    bind=SUPER SHIFT,6,movetoworkspace,6
+    bind=SUPER SHIFT,7,movetoworkspace,7
+    bind=SUPER SHIFT,8,movetoworkspace,8
+    bind=SUPER SHIFT,9,movetoworkspace,9
+    bind=SUPER SHIFT,0,movetoworkspace,10
+    bind=SUPER SHIFT,right,movetoworkspace,+1
+    bind=SUPER SHIFT,left,movetoworkspace,-1
 
     bind=CTRL,right,resizeactive,20 0
     bind=CTRL,left,resizeactive,-20 0
