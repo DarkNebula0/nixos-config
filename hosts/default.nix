@@ -1,4 +1,4 @@
-{ lib, inputs, nixpkgs, nixpkgs-unstable, home-manager, nur, user, location, dslr, hyprland, plasma-manager, ... }:
+{ lib, inputs, nixpkgs, nixpkgs-unstable, home-manager, nur, user, location,  hyprland, ... }:
 
 let
   system = "x86_64-linux";                                  # System architecture
@@ -13,18 +13,13 @@ let
     config.allowUnfree = true;                              
   };
 
-  fix = import dslr {
-    inherit system;
-    config.allowUnfree = true;                              
-  };
-
   lib = nixpkgs.lib;
 in
 {
   desktop = lib.nixosSystem {                               # Desktop profile
     inherit system;
     specialArgs = {
-      inherit inputs unstable system user location fix hyprland;
+      inherit inputs unstable system user location hyprland;
       host = {
         hostName = "desktop";
         mainMonitor = "DP-1";
@@ -40,7 +35,7 @@ in
         home-manager.useGlobalPkgs = true;
         home-manager.useUserPackages = true;
         home-manager.extraSpecialArgs = {
-          inherit unstable user fix;
+          inherit unstable user;
           host = {
             hostName = "desktop";                           #For Xorg iGPU  | Videocard     | Hyprland iGPU
             mainMonitor = "DP-1"; 
