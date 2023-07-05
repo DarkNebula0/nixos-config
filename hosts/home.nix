@@ -54,7 +54,7 @@
       zip               # Zip
     ];
 
-    file."${location}" = {
+    file.${location} = {
       source = ../modules/themes/default;
       recursive = true;
     };
