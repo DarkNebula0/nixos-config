@@ -22,7 +22,7 @@ in
       inherit inputs unstable system user location hyprland;
       host = {
         hostName = "desktop";
-        mainMonitor = "DP-1";
+        mainMonitor = "eDP-1";
       };
     };                                                      # Pass flake variable
     modules = [                                             # Modules that are used.
@@ -38,7 +38,7 @@ in
           inherit unstable user;
           host = {
             hostName = "desktop";                           #For Xorg iGPU  | Videocard     | Hyprland iGPU
-            mainMonitor = "DP-1"; 
+            mainMonitor = "eDP-1"; 
           };
         };                                                  # Pass flake variable
         home-manager.users.${user} = {
