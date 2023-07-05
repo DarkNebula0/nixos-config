@@ -13,8 +13,7 @@
            return {
              front_end = "WebGpu",
              enable_wayland = false,
-             
-             font = wezterm.font 'Comic Code Ligatures',
+
              font_size = 12.0,
              window_background_opacity = 0.6,
              text_background_opacity = 1.0,
