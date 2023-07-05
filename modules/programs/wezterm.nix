@@ -15,7 +15,7 @@
              enable_wayland = false,
 
              font_size = 12.0,
-             window_background_opacity = 0.6,
+             window_background_opacity = 0.8,
              text_background_opacity = 1.0,
              enable_tab_bar = false,
              color_scheme = 'Catppuccin Mocha',
