@@ -62,6 +62,7 @@
       pciutils
       usbutils
       pinentry
+      pinentry-curses
     ];
   };
 
