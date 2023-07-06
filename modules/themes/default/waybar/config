@@ -88,8 +88,8 @@
   "temperature": {
     "thermal-zone": 0,
     "critical-threshold": 80,
-    "format-critical": " {temperatureC}°C</b>",
-    "format": " <b>{temperatureC}°C</b>"
+    "format-critical": " {temperatureC}°C</b>",
+    "format": " <b>{temperatureC}°C</b>"
   },
 
   "wlr/workspaces": {
