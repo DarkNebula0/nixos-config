@@ -4,8 +4,6 @@
 
 { config, lib, pkgs, location, ... }:
 
-let
-in
 {
   home.packages = [ pkgs.libnotify ];                   # Dependency
   services.dunst = {
