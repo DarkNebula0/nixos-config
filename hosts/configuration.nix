@@ -61,7 +61,7 @@
       killall
       pciutils
       usbutils
-      pinentry-rofi
+      pinentry
     ];
   };
 
@@ -72,11 +72,7 @@
 
 
   programs.gnupg.agent = {
-    pinentryFlavor = null;
-      extraConfig = ''
-        pinentry-program ${pkgs.pinentry-rofi}/bin/pinentry-rofi
-        auto-expand-secmem
-      '';
+    pinentryFlavor = "curses";
   };
 
   services = {
