@@ -6,7 +6,7 @@ stdenv.mkDerivation {
   version = "1.0.0";
   src = pkgs.fetchzip {
     url = "https://github.com/EliverLara/candy-icons/archive/master.zip";
-    sha256 = "ee627aa567e112fc5495757143eb89d310ce1885ebe13d83c2508d6be7393f4f";
+    sha256 = "QNQbYxqJWMbm4sP+0RRSEq5tGWmkRh0c039amukGKFE=";
   };
 
   installPhase = ''
