@@ -14,7 +14,7 @@
 { config, lib, pkgs, host, system, hyprland, ... }:
 let
   exec = "exec Hyprland";
-  candy-icons = pkgs.callPackage ../../fonts/candy-icons { };
+  candy-icons = pkgs.callPackage ./candy-icons.nix { };
 in
 {
   imports = [ ../../programs/waybar.nix ];
