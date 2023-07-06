@@ -13,4 +13,4 @@ stdenv.mkDerivation {
     mkdir -p /usr/share/icons
     cp -r candy-icons-master/* /usr/share/icons
   '';
-  };
+}
