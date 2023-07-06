@@ -13,5 +13,4 @@
 [
   ./dunst.nix
   ./udiskie.nix
-  ./yubikey.nix
 ]

@@ -106,6 +106,8 @@
                                             # com.obsproject.Studio
                                             # com.parsecgaming.parsec
                                             # com.usebottles.bottles
+
+    udev.packages = [ pkgs.yubikey-personalization ];
   };
 
   nix = {                                   # Nix Package Manager settings
