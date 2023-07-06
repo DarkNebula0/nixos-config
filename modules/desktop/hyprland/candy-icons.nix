@@ -11,6 +11,6 @@ stdenv.mkDerivation {
 
   installPhase = ''
     mkdir -p $out/share/icons/
-    cp -r candy-icons-master/* $out/share/icons/
+    cp -r ./* $out/share/icons/
   '';
 }
