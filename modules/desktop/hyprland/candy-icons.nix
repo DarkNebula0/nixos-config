@@ -10,7 +10,7 @@ stdenv.mkDerivation {
   };
 
   installPhase = ''
-    mkdir -p ~/.local/share/.icons/
-    cp -r ./* ~/.local/share/.icons/
+    mkdir -p $out/share/icons/
+    cp -r ./* $out/share/icons/
   '';
 }
