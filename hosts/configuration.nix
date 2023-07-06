@@ -64,6 +64,11 @@
     ];
   };
 
+  programs.gnupg.agent = {
+      enable = true;
+      enableSSHSupport = true;
+  };
+
   services = {
     pipewire = {                            # Sound
       enable = true;
@@ -129,4 +134,5 @@
     };
     stateVersion = "23.05";
   };
+
 }
