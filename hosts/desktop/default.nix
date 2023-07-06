@@ -40,6 +40,9 @@
     };
   };
 
+
+  networking.networkmanager.enable = true;
+
   hardware = {
   };
 
