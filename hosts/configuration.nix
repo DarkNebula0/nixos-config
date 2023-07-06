@@ -69,6 +69,9 @@
   #     enableSSHSupport = true;
   # };
 
+
+  programs.gnupg.agent.pinentryFlavor = "tty";
+
   services = {
     pipewire = {                            # Sound
       enable = true;
