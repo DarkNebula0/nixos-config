@@ -71,7 +71,13 @@
   # };
 
 
-  programs.gnupg.agent.pinentryFlavor = "pinentry-rofi";
+  programs.gnupg.agent = {
+    pinentryFlavor = null;
+      extraConfig = ''
+        pinentry-program ${pkgs.pinentry-rofi}/bin/pinentry-rofi
+        auto-expand-secmem
+      '';
+  };
 
   services = {
     pipewire = {                            # Sound
