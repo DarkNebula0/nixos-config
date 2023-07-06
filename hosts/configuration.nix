@@ -108,6 +108,7 @@
                                             # com.usebottles.bottles
 
     udev.packages = [ pkgs.yubikey-personalization ];
+    yubikey-agent.enable = true;
   };
 
   nix = {                                   # Nix Package Manager settings
