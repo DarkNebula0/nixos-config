@@ -51,9 +51,8 @@ in
       wl-clipboard
       wlr-randr
     ];
-  };
 
-  pkgs.stdenv.mkDerivation {
+    candy-icons = pkgs.stdenv.mkDerivation {
     name = "candy-icons";
     version = "1.0.0";
     src = pkgs.fetchurl {
@@ -65,7 +64,9 @@ in
       mkdir -p /usr/share/icons
       cp -r candy-icons-master/* /usr/share/icons
     '';
+    };
   };
+
 
   security.pam.services.swaylock = {
     text = ''

@@ -211,8 +211,8 @@ in
   xdg.configFile."hypr/hyprland.conf".text = hyprlandConf;
 
   programs.swaylock.settings = {
-    image = "$HOME/.config/assets/backgrounds/default.png";
-    color = "000000f0";
+    image = "~/.config/assets/backgrounds/default.png";
+    #color = "000000f0";
     font-size = "24";
     indicator-idle-visible = false;
     indicator-radius = 100;
