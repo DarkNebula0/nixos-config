@@ -61,6 +61,7 @@
       killall
       pciutils
       usbutils
+      pinentry-rofi
     ];
   };
 
@@ -70,7 +71,7 @@
   # };
 
 
-  programs.gnupg.agent.pinentryFlavor = "tty";
+  programs.gnupg.agent.pinentryFlavor = "pinentry-rofi";
 
   services = {
     pipewire = {                            # Sound
