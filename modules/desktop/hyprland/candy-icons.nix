@@ -10,7 +10,7 @@ stdenv.mkDerivation {
   };
 
   installPhase = ''
-    mkdir -p /usr/share/icons
-    cp -r candy-icons-master/* /usr/share/icons
+    mkdir -p $out/share/icons/
+    cp -r candy-icons-master/* $out/share/icons/
   '';
 }
