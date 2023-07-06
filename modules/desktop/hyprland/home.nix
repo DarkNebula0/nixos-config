@@ -175,8 +175,6 @@ let
     bind=SUPER SHIFT,8,movetoworkspace,8
     bind=SUPER SHIFT,9,movetoworkspace,9
     bind=SUPER SHIFT,0,movetoworkspace,10
-    bind=SUPER SHIFT,right,movetoworkspace,+1
-    bind=SUPER SHIFT,left,movetoworkspace,-1
 
     bind=CTRL,right,resizeactive,20 0
     bind=CTRL,left,resizeactive,-20 0
